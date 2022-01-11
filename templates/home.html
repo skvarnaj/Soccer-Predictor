@@ -4,7 +4,11 @@
 <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='css/main.css') }}" />
 <style>
   table {
-    width:100%;
+    width:80%;
+  }
+  table.center {
+  margin-left: auto; 
+  margin-right: auto;
   }
   table, th, td {
     border: 1px solid black;
@@ -30,11 +34,13 @@
 
 
 <h1>Soccer Predictor</h1>
-<body>Enter the stats for each team, click submit, and find the expected goals with win and draw percentages</body>
+<body> 1) Enter the stats for each team<br></body>
+<body>2) click submit<br></body>
+<body>3) See expected goals with win and draw percentages!<br></body>
 
 <h3>Box Score</h3>
 
-<table>
+<table class = "center">
   <tr>
     <th>Home Team</th>
     <th></th> 
