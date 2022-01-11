@@ -1,33 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head> Soccer Predictor
-<style>
-table {
-  width:100%;
-}
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-th, td {
-  padding: 15px;
-  text-align: left;
-}
-#t01 tr:nth-child(even) {
-  background-color: #eee;
-}
-#t01 tr:nth-child(odd) {
- background-color: #fff;
-}
-#t01 th {
-  background-color: black;
-  color: white;
-}
-</style>
+<head>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
 </head>
 <body>
 
-<h2>Box Score</h2>
+
+<h1>Soccer Predictor</h1>
+<body>Enter the stats for each team, click submit, and find the expected goals with win and draw percentages</body>
+
+<h3>Box Score</h3>
 
 <table>
   <tr>
@@ -36,7 +18,11 @@ th, td {
     <th>Away Team</th>
   </tr>
   <tr>
-    <td></td>
+    <td>
+      <form action="/greet">
+      <input type='text' name='username'><br>
+    </form>
+    </td>
     <td>Shots</td>
     <td></td>
   </tr>
@@ -47,11 +33,30 @@ th, td {
   </tr>
   <tr>
     <td></td>
+    <td>Fouls</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
     <td>Corners</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Yellow Cards</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Red Cards</td>
     <td></td>
   </tr>
 </table>
 <br>
+
+<p>
+Expected Goals (XG) home:
+</p>
 
 </body>
 </html>
