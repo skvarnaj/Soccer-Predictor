@@ -29,12 +29,14 @@ def prediction():
     yellowa = request.form.get('yellowa')
     reda = request.form.get('reda')
     forest = Forest()
-    XG_home = forest.predict_home_goals_forest(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
+    XG_home = forest.predict_home_goals(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
+                                        yellowh, yellowa, redh, reda)
+    XG_away = forest.predict_away_goals(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
                                         yellowh, yellowa, redh, reda)
 
     return render_template('prediction.html', form_data = form_data, targeth = targeth, shotsh = shotsh, foulsh = foulsh,
     cornersh = cornersh, yellowh = yellowh, redh = redh, targeta = targeta, shotsa = shotsa, foulsa = foulsa,
-    cornersa = cornersa, yellowa = yellowa, reda = reda, XG_home = XG_home)
+    cornersa = cornersa, yellowa = yellowa, reda = reda, XG_home = XG_home, XG_away = XG_away)
 
 @app.route("/", methods = ['GET', 'POST'])
 def index():
