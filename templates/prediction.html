@@ -1,12 +1,44 @@
 {%  extends "home.html" %}
 
+
+
+{%block firsthome%}
+{{ shots }}
+{%endblock firsthome%}
+
+{%block secondhome%}
+{{ target }}
+{%endblock secondhome%}
+
+{%block thirdhome%}
+{{ fouls }}
+{%endblock thirdhome%}
+
+{%block fourthhome%}
+{{ corners }}
+{%endblock fourthhome%}
+
+{%block fifthhome%}
+{{ yellow }}
+{%endblock fifthhome%}
+
+{%block sixthhome%}
+{{ yellow }}
+{%endblock sixthhome%}
+
+
+
 {% block content %}
+
+    
 <br>
 <p>
-Expected Goals (XG) home: <br>
+{% for key,value in form_data.items() %}
+Expected Goals (XG) home: {{ value }}<br>
+{% endfor %}
 Expected Goals (XG) away: <br>
 <br>
-Home win percentage: <br>
+Home win percentage: {{target}} <br>
 Away win percentage:<br>
 Draw percentage:<br>
 </p>
