@@ -1,36 +1,58 @@
 {%  extends "home.html" %}
 
-
-
 {%block firsthome%}
-{{ shots }}
+{{ shotsh }}
 {%endblock firsthome%}
 
 {%block secondhome%}
-{{ target }}
+{{ targeth }}
 {%endblock secondhome%}
 
 {%block thirdhome%}
-{{ fouls }}
+{{ foulsh }}
 {%endblock thirdhome%}
 
 {%block fourthhome%}
-{{ corners }}
+{{ cornersh }}
 {%endblock fourthhome%}
 
 {%block fifthhome%}
-{{ yellow }}
+{{ yellowh }}
 {%endblock fifthhome%}
 
 {%block sixthhome%}
-{{ yellow }}
+{{ redh }}
 {%endblock sixthhome%}
+
+{%block firstaway%}
+{{ shotsa}}
+{%endblock firstaway%}
+
+{%block secondaway%}
+{{ targeta }}
+{%endblock secondaway%}
+
+{%block thirdaway%}
+{{ foulsa }}
+{%endblock thirdaway%}
+
+{%block fourthaway%}
+{{ cornersa }}
+{%endblock fourthaway%}
+
+{%block fifthaway%}
+{{ yellowa }}
+{%endblock fifthaway%}
+
+{%block sixthaway%}
+{{ reda }}
+{%endblock sixthaway%}
+
 
 
 
 {% block content %}
 
-    
 <br>
 <p>
 {% for key,value in form_data.items() %}

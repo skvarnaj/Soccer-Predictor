@@ -1,23 +1,42 @@
 {%  extends "home.html" %}
 {%block firsthome%}
 <form action = '/prediction' method = 'post'>
-    <input type = 'number' name = 'shots'/>
+    <input type = 'number' name = 'shotsh'/>
 {%endblock firsthome%}
 {%block secondhome%}
-    <input type = 'number' name = 'target'/>
+    <input type = 'number' name = 'targeth'/>
 {%endblock secondhome%}
 {%block thirdhome%}
-    <input type = 'number' name = 'fouls' />
+    <input type = 'number' name = 'foulsh' />
 {%endblock thirdhome%}
 {%block fourthhome%}
-    <input type = 'number' name = 'corners' />
+    <input type = 'number' name = 'cornersh' />
 {%endblock fourthhome%}
 {%block fifthhome%}
-    <input type = 'number' name = 'yellow' />
+    <input type = 'number' name = 'yellowh' />
 {%endblock fifthhome%}
 {%block sixthhome%}
-    <input type = 'number' name = 'red' />
+    <input type = 'number' name = 'redh' />
 {%endblock sixthhome%}
+{%block firstaway%}
+    <input type = 'number' name = 'shotsa' />
+{%endblock firstaway%}
+{%block secondaway%}
+    <input type = 'number' name = 'targeta' />
+{%endblock secondaway%}
+{%block thirdaway%}
+    <input type = 'number' name = 'foulsa' />
+{%endblock thirdaway%}
+{%block fourthaway%}
+    <input type = 'number' name = 'cornersa' />
+{%endblock fourthaway%}
+{%block fifthaway%}
+    <input type = 'number' name = 'yellowa' />
+{%endblock fifthaway%}
+{%block sixthaway%}
+    <input type = 'number' name = 'reda' />
+{%endblock sixthaway%}
+
 {% block submithome%}
     <input type = 'submit' value = 'submit'/>
 {%endblock submithome%}
