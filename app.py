@@ -15,13 +15,16 @@ app.config['SECRET_KEY'] = 'b43e4b51d4f030a6f240c4bf5e41bcf5'
    # id = db.Column(db.Integer, primary_key = True)
     #content = db.Column(db.String(200), nullable = False)
 
-@app.route('/prediction')
+@app.route('/prediction',  methods = ['GET', 'POST'])
 def prediction():
     return render_template('prediction.html')
 
 @app.route("/", methods = ['GET', 'POST'])
 def index():
     form = HomeStats()
+    if form.validate_on_submit:
+        flash('Thanks for submitting')
+        #return redirect(url_for('prediction'))
     return render_template('homestats.html', title = 'homestats', form = form)
 
 @app.route('/homestats', methods = ['GET', 'POST'])

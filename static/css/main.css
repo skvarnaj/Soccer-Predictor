@@ -5,7 +5,8 @@ body {
 }
 p {
     font-family: sans-serif;
-    text-align: center
+    text-align: left;
+    margin-left: 150px
 }
 h1 {
   text-align: center;

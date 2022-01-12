@@ -60,5 +60,9 @@
 {%endblock sixthhome%}
 
 {% block submithome%}
-{{ form.submit(class = 'form-control form')}}
+<form method="POST" action = "/prediction" >
+    <div class = 'form-group'></div>
+    {{ form.submit(class = 'btn')}}
+    </div>
+</form>
 {%endblock submithome%}
