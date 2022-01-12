@@ -1,0 +1,64 @@
+{%  extends "home.html" %}
+{%block firsthome%}
+<div class = 'table data'>
+        <form method="POST" action = "" >
+            <div class = 'form-group'></div>
+                {{ form.shots(class = 'form-control form')}}
+            </div>
+    </form>
+</div>
+{%endblock firsthome%}
+
+{%block secondhome%}
+<div class = 'table data'>
+        <form method="POST" action = "" >
+            <div class = 'form-group'></div>
+                {{ form.target(class = 'form-control form')}}
+            </div>
+    </form>
+</div>
+{%endblock secondhome%}
+
+{%block thirdhome%}
+<div class = 'table data'>
+        <form method="POST" action = "" >
+            <div class = 'form-group'></div>
+                {{ form.fouls(class = 'form-control form')}}
+            </div>
+    </form>
+</div>
+{%endblock thirdhome%}
+
+{%block fourthhome%}
+<div class = 'table data'>
+        <form method="POST" action = "" >
+            <div class = 'form-group'></div>
+                {{ form.corners(class = 'form-control form')}}
+            </div>
+    </form>
+</div>
+{%endblock fourthhome%}
+
+{%block fifthhome%}
+<div class = 'table data'>
+        <form method="POST" action = "" >
+            <div class = 'form-group'></div>
+            {{ form.red(class = 'form-control form')}}
+            </div>
+    </form>
+</div>
+{%endblock fifthhome%}
+
+{%block sixthhome%}
+<div class = 'table data'>
+        <form method="POST" action = "" >
+            <div class = 'form-group'></div>
+                {{ form.red(class = 'form-control form')}}
+            </div>
+    </form>
+</div>
+{%endblock sixthhome%}
+
+{% block submithome%}
+{{ form.submit(class = 'form-control form')}}
+{%endblock submithome%}

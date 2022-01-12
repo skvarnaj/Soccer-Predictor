@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <head>
 <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='css/main.css') }}" />
 <style>
   table {
-    width:80%;
+    width:70%;
   }
   table.center {
   margin-left: auto; 
@@ -15,8 +21,8 @@
     border-collapse: collapse;
   }
   th, td {
-    padding: 15px;
-    text-align: left;
+    padding: 5px;
+    text-align: center;
   }
   #t01 tr:nth-child(even) {
     background-color: #eee;
@@ -33,7 +39,7 @@
 <body>
 
 
-<h1>Soccer Predictor</h1>
+<h1>Soccer Predictor<br></h1>
 <body> 1) Enter the stats for each team<br></body>
 <body>2) click submit<br></body>
 <body>3) See expected goals with win and draw percentages!<br></body>
@@ -47,45 +53,63 @@
     <th>Away Team</th>
   </tr>
   <tr>
-    <td>
-      <form action="/greet">
-      <input type='text' name='username'><br>
-    </form>
-    </td>
+    <td> {%block firsthome%}
+    {%endblock firsthome%}</td>
     <td>Shots</td>
     <td></td>
   </tr>
   <tr>
-    <td></td>
+    <td>
+      {%block secondhome%}
+    {%endblock secondhome%}</td>
     <td>Shots on Target</td>
-    <td></td>
+    <td>
+      <form action="/data" method = "POST">
+      <input type = "number" name = "Name" /><br></td>
   </tr>
   <tr>
-    <td></td>
+    <td>{%block thirdhome%}
+      {%endblock thirdhome%}</td>
     <td>Fouls</td>
-    <td></td>
+    <td>      
+      <form action="/data" method = "POST">
+      <input type = "number" name = "Name" /><br></td>
   </tr>
   <tr>
-    <td></td>
+    <td>      
+      {%block fourthhome%}{%endblock fourthhome%}</td>
     <td>Corners</td>
-    <td></td>
+    <td>      
+      <form action="/data" method = "POST">
+      <input type = "number" name = "Name" /><br></td>
   </tr>
   <tr>
-    <td></td>
+    <td>      
+      {%block fifthhome%}{%endblock fifthhome%}<br></td>
     <td>Yellow Cards</td>
-    <td></td>
+    <td>      
+      <form action="/data" method = "POST">
+      <input type = "number" name = "Name" /><br></td>
   </tr>
   <tr>
-    <td></td>
+    <td>      
+      {%block sixthhome%}{%endblock sixthhome%}</td>
     <td>Red Cards</td>
-    <td></td>
+    <td>      
+      <form action="/data" method = "POST">
+      <input type = "number" name = "Name" /><br></td>
   </tr>
 </table>
-<br>
+{% block submithome%}
+{%endblock submithome%}
 
-<p>
-Expected Goals (XG) home:
-</p>
+{% block content %}{% endblock content %}
 
+</body>
+<body>
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
