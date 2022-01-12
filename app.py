@@ -5,6 +5,7 @@ from wtforms.validators import DataRequired
 from flask_sqlalchemy import SQLAlchemy
 from forms import HomeStats, AwayStats
 from flask_bootstrap import Bootstrap
+from model import Forest
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'b43e4b51d4f030a6f240c4bf5e41bcf5'
@@ -27,10 +28,13 @@ def prediction():
     cornersa = request.form.get('cornersa')
     yellowa = request.form.get('yellowa')
     reda = request.form.get('reda')
+    forest = Forest()
+    XG_home = forest.predict_home_goals_forest(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
+                                        yellowh, yellowa, redh, reda)
 
     return render_template('prediction.html', form_data = form_data, targeth = targeth, shotsh = shotsh, foulsh = foulsh,
     cornersh = cornersh, yellowh = yellowh, redh = redh, targeta = targeta, shotsa = shotsa, foulsa = foulsa,
-    cornersa = cornersa, yellowa = yellowa, reda = reda)
+    cornersa = cornersa, yellowa = yellowa, reda = reda, XG_home = XG_home)
 
 @app.route("/", methods = ['GET', 'POST'])
 def index():
