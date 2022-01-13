@@ -34,9 +34,9 @@ def prediction():
                                         yellowh, yellowa, redh, reda)
     XG_away = forest.predict_away_goals(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
                                         yellowh, yellowa, redh, reda)
-    home_win_percentage = percentages.home_win_percentage(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
+    home_win_percentage = percentages.home_percentage(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
                                         yellowh, yellowa, redh, reda)
-    away_win_percentage = percentages.away_win_percentage(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
+    away_win_percentage = percentages.away_percentage(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
                                         yellowh, yellowa, redh, reda)
     draw_percentage = percentages.draw_percentage(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
                                         yellowh, yellowa, redh, reda)

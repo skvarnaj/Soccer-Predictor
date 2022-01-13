@@ -1,4 +1,5 @@
 import pandas as pd
+from pandas import DataFrame
 import numpy as np
 import matplotlib as plt
 import seaborn as sns
@@ -97,72 +98,52 @@ epl['FTHW'] = (epl['FTR'] == 'H').astype('int')
 epl['FTAW'] = (epl['FTR'] == 'A').astype('int')
 epl.head()
 
-#home win percentage
-y = epl.FTHW
+#Percentages
+y = epl.FTR
 features = ['HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HC', 'AC', 'HY', 'AY', 'HR', 'AR']
 X = epl[features]
-y = y.astype('float32')
+y = y
 X = X.astype('float32')
 
 train_X, val_X, train_y, val_y = train_test_split(X, y,random_state = 0)
 
-reg_model_home = RandomForestRegressor(random_state=0)
-reg_model_home.fit(train_X, train_y)
+percent_model = RandomForestClassifier(random_state=0)
+percent_model.fit(train_X, train_y)
 
-#away win percentage
-y = epl.FTAW
-features = ['HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HC', 'AC', 'HY', 'AY', 'HR', 'AR']
-X = epl[features]
-y = y.astype('float32')
-X = X.astype('float32')
+percent_model.predict_proba(val_X)
+#A, D, H
 
-train_X, val_X, train_y, val_y = train_test_split(X, y,random_state = 0)
+probs = DataFrame(percent_model.predict_proba(val_X),
+                  index=val_X.index,
+                  columns=percent_model.classes_)
+probs.head()
 
-reg_model_away = RandomForestRegressor(random_state=0)
-reg_model_away.fit(train_X, train_y)
-
-#draw percentage
-y = epl.FTD
-features = ['HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HC', 'AC', 'HY', 'AY', 'HR', 'AR']
-X = epl[features]
-y = y.astype('float32')
-X = X.astype('float32')
-
-train_X, val_X, train_y, val_y = train_test_split(X, y,random_state = 0)
-
-reg_model_draw = RandomForestRegressor(random_state=0)
-reg_model_draw.fit(train_X, train_y)
-
-
-#class for win percentages
 class Percentages():
     
     def __init__(self):
         pass
+
+    def home_percentage(self, HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR):
+        row = [[HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR]]
+        yhat = percent_model.predict_proba(row)[0][2]
+        yhat = 100*(float(yhat))
+        yhat = f'{yhat}%'
+        return yhat
     
-    def home_win_percentage(self, HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR):
+    def away_percentage(self, HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR):
         row = [[HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR]]
-        yhat = reg_model_home.predict(row)
+        yhat = percent_model.predict_proba(row)[0][0]
         yhat = 100*(float(yhat))
         yhat = f'{yhat}%'
         return yhat
-        
-    def away_win_percentage(self, HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR):
-        row = [[HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR]]
-        yhat = reg_model_away.predict(row)
-        yhat = 100*(float(yhat))
-        yhat = f'{yhat}%'
-        return yhat
-           
+    
     def draw_percentage(self, HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR):
         row = [[HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR]]
-        yhat = reg_model_draw.predict(row)
+        yhat = percent_model.predict_proba(row)[0][1]
         yhat = 100*(float(yhat))
         yhat = f'{yhat}%'
         return yhat
-
-
-
+    
 
 
 
