@@ -3,7 +3,6 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField
 from wtforms.validators import DataRequired
 from flask_sqlalchemy import SQLAlchemy
-from forms import HomeStats, AwayStats
 from flask_bootstrap import Bootstrap
 from model import Forest, Percentages
 app = Flask(__name__)
@@ -48,13 +47,11 @@ def prediction():
 
 @app.route("/", methods = ['GET', 'POST'])
 def index():
-    form = HomeStats()
-    return render_template('homestats.html', title = 'homestats', form = form)
+    return render_template('homestats.html', title = 'homestats')
 
 @app.route('/homestats', methods = ['GET', 'POST'])
 def homestats():
-    form = HomeStats()
-    return render_template('homestats.html', title = 'homestats', form = form)
+    return render_template('homestats.html', title = 'homestats')
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=8080, debug=True)
