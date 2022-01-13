@@ -127,6 +127,7 @@ class Percentages():
         row = [[HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR]]
         yhat = percent_model.predict_proba(row)[0][2]
         yhat = 100*(float(yhat))
+        yhat = round(yhat, 2)
         yhat = f'{yhat}%'
         return yhat
     
@@ -134,6 +135,7 @@ class Percentages():
         row = [[HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR]]
         yhat = percent_model.predict_proba(row)[0][0]
         yhat = 100*(float(yhat))
+        yhat = round(yhat, 2)
         yhat = f'{yhat}%'
         return yhat
     
@@ -141,6 +143,7 @@ class Percentages():
         row = [[HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR]]
         yhat = percent_model.predict_proba(row)[0][1]
         yhat = 100*(float(yhat))
+        yhat = round(yhat, 2)
         yhat = f'{yhat}%'
         return yhat
     
