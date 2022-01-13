@@ -5,6 +5,8 @@ import seaborn as sns
 import sklearn
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import mean_absolute_error
 import glob
 import os
@@ -65,6 +67,7 @@ X = X.astype('float32')
 
 train_X, val_X, train_y, val_y = train_test_split(X, y,random_state = 0)
 
+#random forest
 forest_model_away = RandomForestRegressor(n_estimators = 100, random_state=1)
 forest_model_away.fit(train_X, train_y)
 
@@ -85,6 +88,82 @@ class Forest():
         yhat = forest_model_away.predict(row)
         yhat = float(yhat)
         return yhat
+
+#win loss draw percentage
+#create dummy variables
+epl
+epl['FTD'] = (epl['FTR'] == 'D').astype('int')
+epl['FTHW'] = (epl['FTR'] == 'H').astype('int')
+epl['FTAW'] = (epl['FTR'] == 'A').astype('int')
+epl.head()
+
+#home win percentage
+y = epl.FTHW
+features = ['HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HC', 'AC', 'HY', 'AY', 'HR', 'AR']
+X = epl[features]
+y = y.astype('float32')
+X = X.astype('float32')
+
+train_X, val_X, train_y, val_y = train_test_split(X, y,random_state = 0)
+
+reg_model_home = RandomForestRegressor(random_state=0)
+reg_model_home.fit(train_X, train_y)
+
+#away win percentage
+y = epl.FTAW
+features = ['HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HC', 'AC', 'HY', 'AY', 'HR', 'AR']
+X = epl[features]
+y = y.astype('float32')
+X = X.astype('float32')
+
+train_X, val_X, train_y, val_y = train_test_split(X, y,random_state = 0)
+
+reg_model_away = RandomForestRegressor(random_state=0)
+reg_model_away.fit(train_X, train_y)
+
+#draw percentage
+y = epl.FTD
+features = ['HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HC', 'AC', 'HY', 'AY', 'HR', 'AR']
+X = epl[features]
+y = y.astype('float32')
+X = X.astype('float32')
+
+train_X, val_X, train_y, val_y = train_test_split(X, y,random_state = 0)
+
+reg_model_draw = RandomForestRegressor(random_state=0)
+reg_model_draw.fit(train_X, train_y)
+
+
+#class for win percentages
+class Percentages():
+    
+    def __init__(self):
+        pass
+    
+    def home_win_percentage(self, HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR):
+        row = [[HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR]]
+        yhat = reg_model_home.predict(row)
+        yhat = 100*(float(yhat))
+        yhat = f'{yhat}%'
+        return yhat
+        
+    def away_win_percentage(self, HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR):
+        row = [[HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR]]
+        yhat = reg_model_away.predict(row)
+        yhat = 100*(float(yhat))
+        yhat = f'{yhat}%'
+        return yhat
+           
+    def draw_percentage(self, HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR):
+        row = [[HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR]]
+        yhat = reg_model_draw.predict(row)
+        yhat = 100*(float(yhat))
+        yhat = f'{yhat}%'
+        return yhat
+
+
+
+
 
 
 

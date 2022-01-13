@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired
 from flask_sqlalchemy import SQLAlchemy
 from forms import HomeStats, AwayStats
 from flask_bootstrap import Bootstrap
-from model import Forest
+from model import Forest, Percentages
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'b43e4b51d4f030a6f240c4bf5e41bcf5'
@@ -29,14 +29,22 @@ def prediction():
     yellowa = request.form.get('yellowa')
     reda = request.form.get('reda')
     forest = Forest()
+    percentages = Percentages()
     XG_home = forest.predict_home_goals(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
                                         yellowh, yellowa, redh, reda)
     XG_away = forest.predict_away_goals(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
                                         yellowh, yellowa, redh, reda)
+    home_win_percentage = percentages.home_win_percentage(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
+                                        yellowh, yellowa, redh, reda)
+    away_win_percentage = percentages.away_win_percentage(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
+                                        yellowh, yellowa, redh, reda)
+    draw_percentage = percentages.draw_percentage(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
+                                        yellowh, yellowa, redh, reda)
 
     return render_template('prediction.html', form_data = form_data, targeth = targeth, shotsh = shotsh, foulsh = foulsh,
     cornersh = cornersh, yellowh = yellowh, redh = redh, targeta = targeta, shotsa = shotsa, foulsa = foulsa,
-    cornersa = cornersa, yellowa = yellowa, reda = reda, XG_home = XG_home, XG_away = XG_away)
+    cornersa = cornersa, yellowa = yellowa, reda = reda, XG_home = XG_home, XG_away = XG_away, percentages = percentages,
+    home_win_percentage = home_win_percentage, away_win_percentage = away_win_percentage, draw_percentage = draw_percentage)
 
 @app.route("/", methods = ['GET', 'POST'])
 def index():
