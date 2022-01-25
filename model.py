@@ -1,21 +1,15 @@
 import pandas as pd
 from pandas import DataFrame
-import numpy as np
-import matplotlib as plt
-import seaborn as sns
-import sklearn
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import mean_absolute_error
 import glob
 import os
 from os import path
 
 path = 'data_zip/archive'
-path_relative = '/Users/joeskvarna/Desktop/Soccer_Predictor/data_zip/archive'
-csv_files = glob.glob(os.path.join(path_relative, "*.csv"))
+#path_relative = '/Users/joeskvarna/Desktop/Soccer_Predictor/data_zip/archive'
+csv_files = glob.glob(os.path.join(path, "*.csv"))
 
 #concatenate files to one file
 li = []

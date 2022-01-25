@@ -1,9 +1,5 @@
-from flask import Flask, render_template, url_for, request, flash, redirect
-from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SubmitField
-from wtforms.validators import DataRequired
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-from flask_bootstrap import Bootstrap
 from model import Forest, Percentages
 app = Flask(__name__)
 

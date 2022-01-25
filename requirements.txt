@@ -61,3 +61,8 @@ wcwidth==0.2.5
 webencodings==0.5.1
 Werkzeug==2.0.2
 widgetsnbextension==3.5.1
+
+pandas
+seaborn
+glob2
+scikit-learn

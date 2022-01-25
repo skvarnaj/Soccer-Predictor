@@ -2,11 +2,12 @@ body {
     background-color: lightgreen;
     margin: 5;
     text-align: center;
-    font-family: Impact;
+    font-family: 'Anton', sans-serif;
     font-size: auto;
+    padding-bottom: 15px;
 }
 h1 {
-  font-family: Impact;
+  font-family: 'Anton', sans-serif;
   text-align: center;
   padding-top: auto;
   padding-bottom: 0px;

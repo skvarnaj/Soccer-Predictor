@@ -1,1 +1,5 @@
-runtime: python38
+runtime: python39
+resources:
+  memory_gb: 4
+
+instance_class: F4_HIGHMEM
