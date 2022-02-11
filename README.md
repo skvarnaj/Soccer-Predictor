@@ -4,8 +4,11 @@ The Soccer Score Predictor is an interactive web app that allows users to enter 
 
 The Soccer Score Predictor implements Machine Learning algorithms applied to English Premier soccer games. Below is a link to the web app and screenshots from the app.
 
+## Link:
 https://soccer-predictor-339300.wl.r.appspot.com/
 
+
+## Screenshots
 
 ![](images/home_page_blank.png)
 
