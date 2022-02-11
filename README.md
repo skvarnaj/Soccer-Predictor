@@ -7,8 +7,8 @@ The Soccer Score Predictor implements Machine Learning algorithms applied to Eng
 https://soccer-predictor-339300.wl.r.appspot.com/
 
 
-![Blank Home Page](/Users/joeskvarna/Desktop/home_page_blank.png)
+![](images/home_page_blank.png)
 
-![Home Page Populated](/Users/joeskvarna/Desktop/home_page_populated.png)
+![](images/home_page_populated.png)
 
-![Landing Page](/Users/joeskvarna/Desktop/landing_page.png)
+![](images/landing_page.png)
