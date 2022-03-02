@@ -6,6 +6,7 @@ The Soccer Score Predictor implements Machine Learning algorithms applied to Eng
 
 ## Link:
 https://soccer-predictor-339300.wl.r.appspot.com/
+*it may take several seconds to load
 
 
 ## Screenshots
