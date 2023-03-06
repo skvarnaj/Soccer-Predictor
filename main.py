@@ -1,6 +1,15 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from model import Forest, Percentages
+from model_shots import Goal
+import io
+from flask import Response
+import matplotlib
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+import matplotlib.image as mpimg
+matplotlib.use('Agg')
+
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'b43e4b51d4f030a6f240c4bf5e41bcf5'
@@ -48,6 +57,18 @@ def index():
 @app.route('/homestats', methods = ['GET', 'POST'])
 def homestats():
     return render_template('homestats.html', title = 'homestats')
+
+@app.route("/temp", methods = ['GET', 'POST'])
+def temp():
+    return render_template('temp.html', title = 'temp')
+
+@app.route("/plot", methods = ['GET', 'POST'])
+def plot():
+    goal = Goal(115, 35)
+    fig = goal.shot_chart()
+    fig.savefig('static/myplot.png')
+    return render_template("plot.html", title = 'plot', fig = fig)
+
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=8080, debug=True)
