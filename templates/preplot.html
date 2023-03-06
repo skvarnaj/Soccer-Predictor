@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=""viewpoint" content="width=device=width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='css/main.css') }}" />
+</head>
+<body>
+    <img src="static/soccer_field.png" alt = "field">
+    <p>
+        <form action = '/plot' method = 'post'>
+            <input type = 'number' name = 'xcord' />
+            <input type = 'number' name = 'ycord' />
+            <input type = 'submit' value = 'submit'/>
+        </form>
+    </p>
+</body>
+</html>
