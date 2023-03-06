@@ -2,4 +2,3 @@ node_modules
 venv/*
 .ipynb_checkpoints
 __pycache__
-images/*
