@@ -62,13 +62,21 @@ def homestats():
 def temp():
     return render_template('temp.html', title = 'temp')
 
+@app.route("/preplot", methods = ['GET', 'POST'])
+def preplot():
+    return render_template("preplot.html", title = 'preplot')
+
 @app.route("/plot", methods = ['GET', 'POST'])
 def plot():
-    goal = Goal(115, 35)
+    form_data = request.form
+    xcord = request.form.get('xcord')
+    ycord = request.form.get('ycord')
+    xcord = int(xcord)
+    ycord = int(ycord)
+    goal = Goal(xcord, ycord)
     fig = goal.shot_chart()
     fig.savefig('static/myplot.png')
-    return render_template("plot.html", title = 'plot', fig = fig)
-
+    return render_template("plot.html", title = 'plot', fig = fig, form_data = form_data, xcord=xcord, ycord=ycord)
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=8080, debug=True)
