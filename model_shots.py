@@ -69,7 +69,8 @@ class Goal:
         df = pd.DataFrame([[self.x, self.y]])
         df.columns = ['x1', 'y1']
         g = sns.relplot(data = df, x = 'x1', y = 'y1', kind = 'scatter', **kwargs)
-        g.set(yticks=[], xticks=[], xlabel= self.is_goal(), ylabel=None)
+        g.set(yticks=[], xticks=[], xlabel= None, ylabel=None)
+        # self.is_goal()
         g.despine(left = True, bottom = True)
         for ax in g.fig.axes:
             ax.imshow(map_img, zorder=0, extent=[0,120,75,0])          
