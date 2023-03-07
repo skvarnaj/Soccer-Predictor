@@ -74,9 +74,11 @@ def plot():
     xcord = int(xcord)
     ycord = int(ycord)
     goal = Goal(xcord, ycord)
+    percent = goal.is_goal()
     fig = goal.shot_chart()
-    fig.savefig('static/myplot.png')
-    return render_template("plot.html", title = 'plot', fig = fig, form_data = form_data, xcord=xcord, ycord=ycord)
+    fig.savefig('static/myplot.png',  pad_inches=0, dpi=300)
+
+    return render_template("plot.html", title = 'plot', fig = fig, form_data = form_data, xcord=xcord, ycord=ycord, percent=percent)
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=8080, debug=True)
