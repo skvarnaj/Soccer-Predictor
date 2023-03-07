@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name=""viewpoint" content="width=device=width, initial-scale=1.0">
     <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='css/main.css') }}" />
+
+    
 </head>
 <body>
-    <img src="static/soccer_field.png" alt = "field">
+    <img src="static/soccer_field.png" alt = "field" height = "630" width = "1080" class = "soccer">
     <p>
         <form action = '/plot' method = 'post'>
             <input type = 'number' name = 'xcord' />
