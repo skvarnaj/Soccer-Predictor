@@ -14,7 +14,7 @@ DATA_DIR = '/Users/joeskvarna/Desktop/learn-to-code-soccer/data/'
 shots = pd.read_csv(path.join(DATA_DIR, 'shots.csv'))
 
 # create soccer field as the plot
-map_img = mpimg.imread('./static/soccer_field.png')
+map_img = mpimg.imread('./static/soccer_field_lg.png')
 
 # rescale axis to match soccer field dimensions
 shots['x1'] = shots['x1'] * 1.2
