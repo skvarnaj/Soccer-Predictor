@@ -66,6 +66,10 @@ def temp():
 def cordplot():
     return render_template("cordplot.html", title = 'preplot')
 
+@app.route("/landing", methods = ['GET', 'POST'])
+def landing():
+    return render_template("landing.html", title = 'landing')
+
 @app.route("/plot", methods = ['GET', 'POST'])
 def plot():
     form_data = request.form
