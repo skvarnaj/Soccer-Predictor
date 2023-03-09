@@ -63,8 +63,8 @@ def temp():
     return render_template('temp.html', title = 'temp')
 
 @app.route("/preplot", methods = ['GET', 'POST'])
-def preplot():
-    return render_template("preplot.html", title = 'preplot')
+def cordplot():
+    return render_template("cordplot.html", title = 'preplot')
 
 @app.route("/plot", methods = ['GET', 'POST'])
 def plot():

@@ -1,0 +1,15 @@
+{%  extends "preplot.html" %}
+
+{%block xform%}
+<form action = '/plot#bottom' method = 'post'>
+<input type = 'number' name = 'xcord' id = 'x'/>
+{%endblock xform%}
+
+{%block yform%} 
+<input type = 'number' name = 'ycord' id = 'y'/>
+{%endblock yform%}
+
+{%block cordsubmit%} 
+<input type = 'submit' value = 'submit'/>
+</form>
+{%endblock cordsubmit%}
