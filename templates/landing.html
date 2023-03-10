@@ -17,10 +17,13 @@
   cursor: pointer; /* Pointer/hand icon */
   float: center;
   height: 150px;
-  width: 150px;
+  width: 200px;
   margin-left: auto; 
   margin-right: auto;
+  opacity: 1;
+  transition: 0.3s;
  }
+ .btn-group button:hover {opacity: 0.6}
 
   table {
     border: white;
@@ -63,33 +66,68 @@
   display: table-cell;
   width: 500px;
   height: 500px;
-  vertical-align: middle;
+  vertical-align: top;
   text-align: center;
+  padding-top: 5%;
 }
 
 .inner {
   display: inline-block;
   width: 200px; height: 300px;
 }
+
+.topnav {
+  overflow: hidden;
+  background-color: rgb(2, 151, 79);
+}
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 30px;
+  text-decoration: none;
+  font-size: 18px;
+}
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.topnav a.right {
+  float: right;
+}
 </style>
 </head>
+<div class="topnav">
+  <a class="active" href="/landing">Home</a>
+  <a href="/landing">About</a>
+  <a href="/">Score Predidctor</a>
+  <a href="/preplot">Shot Predictor</a>
+  <a class='right' href="/landing">Contact</a>
+</div>
 <div class="cn">
-<div class = "inner" style="float: left; width 50%; padding: 30px;">
+<div class = "inner" style="float: left; width 50%; padding-left: 75px;">
     <h1>Soccer</h1>
     <h1>Predictor</h1>
 </div>
 </div>
 <div class="cn">
-<div class="inner" style="float: right; width 50%;">
+<div class="inner" style="float: right; width 50%; padding-right: 25px">
     <img src= 'static/myplot.png' height="350" width="500">
 </div>
 </div>
-<div><br></div>
-<div><br></div>
-<div><br></div>
 <p>Try the 2 interactive models by clicking below!</p>
-<div class="btn-group" style="width:50%">
-  <button style="width:40%">Score Predictor<br> "The OG"</button>
-  <button style="width:40%">Shot Predictor</button>
+<div class="btn-group" style="width:500px">
+  <form action = '/' method = 'post' style="padding-right: 50px">
+    <button> Score Predictor<br> "The OG"</button>
+  </form>
+  <form action = '/preplot' method = 'post' style="padding-left: 50px">
+    <button> Shot Predictor</button>
+  </form>
 </div>
+
 </html>
