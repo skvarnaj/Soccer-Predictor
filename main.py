@@ -50,7 +50,7 @@ def prediction():
     cornersa = cornersa, yellowa = yellowa, reda = reda, XG_home = XG_home, XG_away = XG_away, percentages = percentages,
     home_win_percentage = home_win_percentage, away_win_percentage = away_win_percentage, draw_percentage = draw_percentage)
 
-@app.route("/", methods = ['GET', 'POST'])
+@app.route("/predictor", methods = ['GET', 'POST'])
 def index():
     return render_template('homestats.html', title = 'homestats')
 
@@ -66,7 +66,7 @@ def temp():
 def cordplot():
     return render_template("cordplot.html", title = 'preplot')
 
-@app.route("/landing", methods = ['GET', 'POST'])
+@app.route("/", methods = ['GET', 'POST'])
 def landing():
     return render_template("landing.html", title = 'landing')
 
