@@ -9,7 +9,44 @@
 <head>
 <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='css/main.css') }}" />
 <style>
-.btn-group button {
+  table {
+    border: white;
+    width:70%;
+  }
+  table.center {
+  margin-left: auto; 
+  margin-right: auto;
+  }
+  table, th, td {
+    border: 5px solid white;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 5px;
+    text-align: center;
+  }
+  th{
+    font-size: 25px;
+  }
+  td{
+    font-size: 20px;
+  }
+  #t01 tr:nth-child(even) {
+    background-color: #eee;
+  }
+  #t01 tr:nth-child(odd) {
+   background-color: #fff;
+  }
+  #t01 th {
+    background-color: black;
+    color: white;
+  }
+  input[type=number] {
+      border:  3px solid rgba(245, 250, 245, 0.925);
+      background-color: transparent;
+      color: solid black;
+  }
+  .btn-group button {
   background-color: rgb(144, 238, 144); /* Green background */
   border: 3px solid green; /* Green border */
   color: rgb(9, 9, 9); /* White text */
@@ -100,34 +137,14 @@
 .topnav a.right {
   float: right;
 }
-</style>
+  </style>
 </head>
 <div class="topnav">
   <a class="active" href="/">Home</a>
-  <a href="/">About</a>
+  <a href="/about">About</a>
   <a href="/predictor">Score Predidctor</a>
   <a href="/preplot">Shot Predictor</a>
-  <a class='right' href="/">Contact</a>
+  <a class='right' href="/contact">Contact</a>
 </div>
-<div class="cn">
-<div class = "inner" style="float: left; width 50%; padding-left: 75px;">
-    <h1>Soccer</h1>
-    <h1>Predictor</h1>
-</div>
-</div>
-<div class="cn">
-<div class="inner" style="float: right; width 50%; padding-right: 25px">
-    <img src= 'static/myplot.png' height="350" width="500">
-</div>
-</div>
-<p>Try the 2 interactive models by clicking below!</p>
-<div class="btn-group" style="width:500px">
-  <form action = '/predictor' method = 'post' style="padding-right: 50px">
-    <button> Score Predictor<br> "The OG"</button>
-  </form>
-  <form action = '/preplot' method = 'post' style="padding-left: 50px">
-    <button> Shot Predictor</button>
-  </form>
-</div>
-
-</html>
+{%block all%}
+{%endblock all%}

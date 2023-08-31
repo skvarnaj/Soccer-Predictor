@@ -17,6 +17,48 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 
 db = SQLAlchemy(app)
 
+@app.route("/", methods = ['GET', 'POST'])
+def landing():
+    return render_template("home.html", title = 'landing')
+
+@app.route("/about", methods = ['GET', 'POST'])
+def about():
+    return render_template("about.html", title = 'about')
+
+@app.route("/contact", methods = ['GET', 'POST'])
+def contact():
+    return render_template("contact.html", title = 'contact')
+
+@app.route("/predictor", methods = ['GET', 'POST'])
+def index():
+    return render_template('homestats.html', title = 'homestats')
+
+@app.route('/homestats', methods = ['GET', 'POST'])
+def homestats():
+    return render_template('homestats.html', title = 'homestats')
+
+@app.route("/temp", methods = ['GET', 'POST'])
+def temp():
+    return render_template('temp.html', title = 'temp')
+
+@app.route("/preplot", methods = ['GET', 'POST'])
+def cordplot():
+    return render_template("cordplot.html", title = 'preplot')
+
+@app.route("/plot", methods = ['GET', 'POST'])
+def plot():
+    form_data = request.form
+    xcord = request.form.get('xcord')
+    ycord = request.form.get('ycord')
+    xcord = int(xcord)
+    ycord = int(ycord)
+    goal = Goal(xcord, ycord)
+    percent = goal.is_goal()
+    fig = goal.shot_chart()
+    fig.savefig('static/myplot.png',  pad_inches=0, dpi=300)
+
+    return render_template("plot.html", title = 'plot', fig = fig, form_data = form_data, xcord=xcord, ycord=ycord, percent=percent)
+
 @app.route('/prediction',  methods = ['GET', 'POST'])
 def prediction():
     form_data = request.form
@@ -49,40 +91,6 @@ def prediction():
     cornersh = cornersh, yellowh = yellowh, redh = redh, targeta = targeta, shotsa = shotsa, foulsa = foulsa,
     cornersa = cornersa, yellowa = yellowa, reda = reda, XG_home = XG_home, XG_away = XG_away, percentages = percentages,
     home_win_percentage = home_win_percentage, away_win_percentage = away_win_percentage, draw_percentage = draw_percentage)
-
-@app.route("/predictor", methods = ['GET', 'POST'])
-def index():
-    return render_template('homestats.html', title = 'homestats')
-
-@app.route('/homestats', methods = ['GET', 'POST'])
-def homestats():
-    return render_template('homestats.html', title = 'homestats')
-
-@app.route("/temp", methods = ['GET', 'POST'])
-def temp():
-    return render_template('temp.html', title = 'temp')
-
-@app.route("/preplot", methods = ['GET', 'POST'])
-def cordplot():
-    return render_template("cordplot.html", title = 'preplot')
-
-@app.route("/", methods = ['GET', 'POST'])
-def landing():
-    return render_template("landing.html", title = 'landing')
-
-@app.route("/plot", methods = ['GET', 'POST'])
-def plot():
-    form_data = request.form
-    xcord = request.form.get('xcord')
-    ycord = request.form.get('ycord')
-    xcord = int(xcord)
-    ycord = int(ycord)
-    goal = Goal(xcord, ycord)
-    percent = goal.is_goal()
-    fig = goal.shot_chart()
-    fig.savefig('static/myplot.png',  pad_inches=0, dpi=300)
-
-    return render_template("plot.html", title = 'plot', fig = fig, form_data = form_data, xcord=xcord, ycord=ycord, percent=percent)
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=8080, debug=True)
