@@ -1,3 +1,4 @@
+import os
 from os import path
 import pandas as pd
 import seaborn as sns
@@ -9,8 +10,8 @@ from sklearn.ensemble import RandomForestClassifier
 matplotlib.use('Agg')
 
 # path and load data
-DATA_DIR = 'data_zip/'
-shots = pd.read_csv(path.join(DATA_DIR, 'shots.csv'))
+path = './data_zip/'
+shots = pd.read_csv(os.path.join(path, 'shots.csv'))
 
 # create soccer field as the plot
 map_img = mpimg.imread('./static/soccer_field_lg.png')
