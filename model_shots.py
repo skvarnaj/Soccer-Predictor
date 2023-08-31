@@ -9,7 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 matplotlib.use('Agg')
 
 # path and load data
-DATA_DIR = '/Users/joeskvarna/Desktop/learn-to-code-soccer/data/'
+DATA_DIR = 'data_zip/'
 shots = pd.read_csv(path.join(DATA_DIR, 'shots.csv'))
 
 # create soccer field as the plot
