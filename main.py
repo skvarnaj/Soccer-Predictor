@@ -18,8 +18,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 db = SQLAlchemy(app)
 
 @app.route("/", methods = ['GET', 'POST'])
-def landing():
-    return render_template("home.html", title = 'landing')
+def index():
+    return render_template("index.html", title = 'landing')
 
 @app.route("/about", methods = ['GET', 'POST'])
 def about():
@@ -30,7 +30,7 @@ def contact():
     return render_template("contact.html", title = 'contact')
 
 @app.route("/predictor", methods = ['GET', 'POST'])
-def index():
+def landing():
     return render_template('homestats.html', title = 'homestats')
 
 @app.route('/homestats', methods = ['GET', 'POST'])

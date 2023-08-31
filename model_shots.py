@@ -1,6 +1,5 @@
 from os import path
 import pandas as pd
-import requests
 import seaborn as sns
 import matplotlib
 import matplotlib.image as mpimg

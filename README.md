@@ -9,7 +9,7 @@ The Soccer Score Predictor implements Machine Learning (ML) algorithms applied t
 I used Python (pandas) to load and preprocess the EPL game data; Python (scikit-learn) to test, implement, validate ML models; HTML/CSS for frontend web dev and design; Google Cloud Platform to deploy the application as a public website.
 
 ## Link:
-https://soccer-predictor-339300.wl.r.appspot.com/
+https://soccer-predictor-397605.uw.r.appspot.com
 *it may take several seconds to load
 
 
