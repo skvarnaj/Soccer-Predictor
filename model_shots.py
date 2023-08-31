@@ -10,10 +10,7 @@ from sklearn.ensemble import RandomForestClassifier
 matplotlib.use('Agg')
 
 # path and load data
-absolute_path = os.path.dirname(__file__)
-relative_path = "data_zip/"
-path = os.path.join(absolute_path, relative_path)
-shots = pd.read_csv(os.path.join(path, 'shots.csv'))
+shots = pd.read_csv('./data_zip/shots.csv')
 
 # create soccer field as the plot
 map_img = mpimg.imread('./static/soccer_field_lg.png')
