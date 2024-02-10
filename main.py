@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
-from flask_sqlalchemy import SQLAlchemy
-from model import Forest, Percentages
+from model import Goals, Percentages, prep_data, create_home_xg, create_away_xg, percent_model
 from model_shots import Goal
 import io
 from flask import Response
@@ -11,11 +10,6 @@ import matplotlib.image as mpimg
 matplotlib.use('Agg')
 
 app = Flask(__name__)
-
-app.config['SECRET_KEY'] = 'b43e4b51d4f030a6f240c4bf5e41bcf5'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
-
-db = SQLAlchemy(app)
 
 @app.route("/", methods = ['GET', 'POST'])
 def index():
@@ -74,11 +68,11 @@ def prediction():
     cornersa = request.form.get('cornersa')
     yellowa = request.form.get('yellowa')
     reda = request.form.get('reda')
-    forest = Forest()
+    goals = Goals()
     percentages = Percentages()
-    XG_home = forest.predict_home_goals(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
+    XG_home = goals.predict_home_goals(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
                                         yellowh, yellowa, redh, reda)
-    XG_away = forest.predict_away_goals(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
+    XG_away = goals.predict_away_goals(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
                                         yellowh, yellowa, redh, reda)
     home_win_percentage = percentages.home_percentage(shotsh, shotsa, targeth, targeta, foulsh, foulsa, cornersh, cornersa,
                                         yellowh, yellowa, redh, reda)
