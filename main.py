@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from model import Goals, Percentages, prep_data, create_home_xg, create_away_xg, percent_model
 from model_shots import Goal
 import io
+import os
 from flask import Response
 import matplotlib
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
@@ -37,6 +38,7 @@ def temp():
 
 @app.route("/preplot", methods = ['GET', 'POST'])
 def cordplot():
+
     return render_template("cordplot.html", title = 'preplot')
 
 @app.route("/plot", methods = ['GET', 'POST'])
@@ -49,7 +51,7 @@ def plot():
     goal = Goal(xcord, ycord)
     percent = goal.is_goal()
     fig = goal.shot_chart()
-    fig.savefig('static/myplot.png',  pad_inches=0, dpi=300)
+    fig.savefig(os.path.join(app.root_path, 'static/myplot.png'),  pad_inches=0, dpi=300)
 
     return render_template("plot.html", title = 'plot', fig = fig, form_data = form_data, xcord=xcord, ycord=ycord, percent=percent)
 

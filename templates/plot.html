@@ -61,7 +61,7 @@ h3 {
 <h3>Enter the x and y coordinates of your shot and see the % chance of a goal!</h3>
 <body>
     <p>
-   <img src= "static/myplot.png" class = "soccer" height="504" width="864">
+   <img src= "{{url_for('static', filename='myplot.png')}}" class = "soccer" height="504" width="864">
     <table class="center">
         <tr>
             <td>Percent chance of a goal: {{ percent }}</td>
