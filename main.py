@@ -8,9 +8,12 @@ import matplotlib
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 import matplotlib.image as mpimg
+import urllib
+import base64
 matplotlib.use('Agg')
 
 app = Flask(__name__)
+app.config['DEBUG'] = True
 
 @app.route("/", methods = ['GET', 'POST'])
 def index():
@@ -51,9 +54,17 @@ def plot():
     goal = Goal(xcord, ycord)
     percent = goal.is_goal()
     fig = goal.shot_chart()
-    fig.savefig(os.path.join(app.root_path, 'static/myplot.png'),  pad_inches=0, dpi=300)
+    
+    
+    if os.path.isfile((os.path.join(app.root_path, 'static/myplot.png'))):
+        os.remove(os.path.join(app.root_path, 'static/myplot.png'))
+    #fig.savefig(os.path.join(app.root_path, 'static/myplot.png'),  pad_inches=0, dpi=300)
+    img = io.BytesIO()
+    fig.savefig(img, format = 'png')
+    img.seek(0)
+    plot_data = urllib.parse.quote(base64.b64encode(img.read()).decode())
 
-    return render_template("plot.html", title = 'plot', fig = fig, form_data = form_data, xcord=xcord, ycord=ycord, percent=percent)
+    return render_template("plot.html", title = 'plot', fig = fig, form_data = form_data, xcord=xcord, ycord=ycord, percent=percent, plot_url = plot_data)
 
 @app.route('/prediction',  methods = ['GET', 'POST'])
 def prediction():
